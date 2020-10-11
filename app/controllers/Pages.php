@@ -92,13 +92,8 @@
       $response= curl_exec($ch);
       $info= curl_getinfo($ch);
       $data = json_decode($response);
-      if($info['http_code']==200)
-      { $this->view('pages/tickets',$data);    }
-      else
-      {
-          $info = $info['http_code'];
-          $this->view('pages/tickets',$info);
-      }
+      
+      $this->view('pages/tickets',$data);
       
       curl_close($ch);
     }

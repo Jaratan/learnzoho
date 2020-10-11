@@ -6,7 +6,7 @@
                     <h3>Submit a Ticket</h3>
                     <form action="<?php echo URLROOT;?>/pages/new_ticket" method="POST">
                         <?php 
-                        if(!empty($data))
+                        if(!empty($data) && !isset($data->errorCode))
                         {
                             echo "<h4>Ticket Information</h4>";
                             foreach ($data as $key => $value)

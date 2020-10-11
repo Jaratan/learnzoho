@@ -1,7 +1,8 @@
 <?php require APPROOT . '/views/inc/header.php'; ?> 
 	
     <?php
-       if(isset($data) && !empty($data))
+        $no_result = true;
+       if(isset($data) && !empty($data) && !isset($data->errorCode))
        {
             foreach ($data as $key => $value)
             {
@@ -9,6 +10,7 @@
                 {
                     if($value1->contactId==$_SESSION['contact_id'])
                     {
+                        $no_result=false;
                         echo '<div class="row">';
                             echo '<div class="col-lg-4 col-md-4">';
                                 echo '<div class="fh5co-blog animate-box">';
@@ -40,6 +42,22 @@
             </div>
         </div>
        <?php }
+       if($no_result)
+       {?>
+        <div id="fh5co-contact">
+            <div class="container">
+                <div class="row">
+                    <h3>There are no Tickets in this view</h3>
+                    <div class="col-md-5 col-md-push-1 animate-box">
+                        <div class="fh5co-contact-info">
+                            <img src="<?php echo URLROOT?>/images/sitback.svg">
+                        </div>
+                    </div>
+                </div>
+                <h3 style="margin-left: 230px;">Sit back and Relax</h3>
+            </div>
+        </div>
+    <?php   }
     ?>
 	
 <?php require APPROOT . '/views/inc/footer.php'; ?> 
